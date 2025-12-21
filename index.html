@@ -332,4 +332,84 @@
                             <div class="w-10 h-10 bg-accent-500/10 dark:bg-accent-600/10 rounded-full flex items-center justify-center text-accent-500 dark:text-accent-400">
                                 <i class="fas fa-user"></i>
                             </div>
-                            <span>About me</spa
+                            <span>About me</span>
+                            <div class="flex-1 h-0.5 bg-neutral-200 dark:bg-neutral-700/50"></div>
+                        </h2>
+                        
+                        <div class="bg-neutral-50 dark:bg-neutral-700/30 rounded-xl p-6 card-hover">
+                            <p class="text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">
+                                <span class="block mb-6">
+                                    <span class="block font-medium text-neutral-900 dark:text-neutral-100 mb-1">Life is short, without inherent meaning or hope.</span>
+                                    But the process the exploration itself is mine to discover.
+                                </span>
+
+                                <span class="block mb-6 pl-4 border-l-2 border-neutral-300 dark:border-neutral-600">
+                                    In the past, I was always afraid of losing things, anxious about the future, and stuck in a routine. I didn't know how to move forward.
+                                </span>
+
+                                <span class="block mb-6">
+                                    Confusion, fear, and avoidance. Perhaps death might be more effortless than survival.
+                                </span>
+
+                                <span class="block mb-2 text-neutral-900 dark:text-neutral-100">
+                                    But I like a quote from Tagore:
+                                </span>
+                                
+                                <blockquote class="italic text-neutral-600 dark:text-neutral-400 mb-6 p-4 bg-neutral-50 dark:bg-neutral-800/30 rounded-lg border-l-4 border-primary-500/50 dark:border-primary-400/50">
+                                    I lose my way and I wander, I seek what I cannot get, I get what I do not seek.<br>
+                                    From my heart comes out and dances the image of my own desire.<br>
+                                    The gleaming vision flits on.<br>
+                                    I try to clasp it firmly, it eludes me and leads astray.<br>
+                                    I seek what I cannot get, I get what I do not seek.
+                                </blockquote>
+
+                                <span class="block pt-4 mt-4 border-t border-neutral-200 dark:border-neutral-700 text-center text-neutral-900 dark:text-neutral-100 font-medium">
+                                    In the end, the dance of fingertips will still. Yet before reaching the other shore — we will have gathered something, won’t we?
+                                </span>
+                            </p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <footer class="mt-12 text-center">
+            <div class="border-t border-neutral-200 dark:border-neutral-700 pt-8">
+                <p class="text-neutral-500 dark:text-neutral-400 text-sm">Welcome here</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // 主题切换功能
+        const toggleTheme = () => {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        };
+
+        // 初始化主题
+        const initTheme = () => {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.documentElement.classList.add('dark');
+            }
+        };
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+            document.getElementById('toggle-theme').addEventListener('click', toggleTheme);
+            document.body.classList.add('animate-fade-in');
+        });
+    </script>
+    <link rel="stylesheet" href="https://blog-static.cnblogs.com/files/miluluyo/APlayer.min.css">
+    <div id="player" class="aplayer aplayer-withlist aplayer-fixed" data-id="9171330851" data-server="netease" data-type="playlist" data-order="random" data-fixed="true" data-listfolded="true" data-theme="#2D8CF0"></div>
+    <script src="https://blog-static.cnblogs.com/files/miluluyo/APlayer.min.js"></script>
+    <script src="https://blog-static.cnblogs.com/files/miluluyo/Meting.min.js"></script>
+</body>
+</html>
