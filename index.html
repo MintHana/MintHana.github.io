@@ -1,13 +1,335 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HELLO</title>
-    <style>
+    <title>MySelf - Mint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#EFF6FF',
+                            100: '#DBEAFE',
+                            500: '#3B82F6',
+                            600: '#2563EB',
+                            700: '#1D4ED8'
+                        },
+                        secondary: {
+                            50: '#ECFDF5',
+                            500: '#10B981',
+                            600: '#059669'
+                        },
+                        accent: {
+                            500: '#F59E0B',
+                            600: '#D97706'
+                        },
+                        neutral: {
+                            50: '#f9fafb',
+                            100: '#F3F4F6',
+                            200: '#E5E7EB',
+                            300: '#D1D5DB',
+                            700: '#374151',
+                            800: '#1F2937',
+                            900: '#111827'
+                        }
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                        'hover': '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'slide-up': 'slideUp 0.6s ease-out forwards',
+                    }
+                }
+            },
+            darkMode: 'class',
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-balance {
+                text-wrap: balance;
+            }
+            .transition-base {
+                transition: all 0.25s ease-in-out;
+            }
+            .transition-all-ease {
+                transition: all 0.3s ease;
+            }
+            .skill-tag {
+                transition: all 0.2s ease;
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            @apply font-inter bg-neutral-100 text-neutral-800 dark:bg-neutral-900 dark:text-neutral-50 min-h-screen antialiased;
+        }
+
+        html.dark {
+            color-scheme: dark;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            @apply bg-neutral-100 dark:bg-neutral-800;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            @apply bg-primary-500 dark:bg-primary-600 rounded-full;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            @apply bg-primary-600 dark:bg-primary-700;
+        }
+        
+        .skill-tag:hover {
+            @apply transform scale-105 bg-primary-500 text-white dark:bg-primary-600;
+        }
+        
+        .card-hover:hover {
+            @apply transform -translate-y-2 shadow-hover;
+        }
+        
+        /* 微信绿色样式 */
+        .wechat-green {
+            color: #1AAD19;
+        }
+        .dark .wechat-green {
+            color: #07C160;
+        }
     </style>
 </head>
 <body>
-    <h1>Hello,World</h1>
-</body>
-</html>
+    <!-- 主题切换按钮 -->
+    <button id="toggle-theme" class="fixed top-6 right-6 w-12 h-12 rounded-full bg-white dark:bg-neutral-800 shadow-soft flex items-center justify-center text-neutral-700 dark:text-neutral-200 transition-all-ease hover:bg-primary-500 dark:hover:bg-primary-500 hover:text-white z-50">
+        <i class="far fa-sun dark:hidden text-xl"></i>
+        <i class="far fa-moon hidden dark:block text-xl"></i>
+    </button>
+
+    <!-- 主容器 -->
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 max-w-7xl">
+        <!-- 页面标题 -->
+        <section class="text-center mb-12 animate-slide-up">
+            <h1 class="text-[clamp(1.8rem,5vw,3rem)] font-bold text-neutral-900 dark:text-white mb-4 tracking-tight">ABOUT ME</h1>
+            <div class="w-20 h-1 bg-primary-500 dark:bg-primary-600 mx-auto rounded-full mb-6"></div>
+            <p class="text-neutral-700 dark:text-neutral-300 max-w-2xl mx-auto text-base sm:text-lg">
+                A lost person
+            </p>
+        </section>
+
+        <!-- 个人介绍卡片 -->
+        <div class="bg-white dark:bg-neutral-800 rounded-2xl shadow-soft overflow-hidden">
+            <!-- 左右布局容器 -->
+            <div class="flex flex-col lg:flex-row">
+                <!-- 左侧栏 - 个人信息 -->
+                <div class="w-full lg:w-2/5 bg-neutral-50 dark:bg-neutral-800/50 p-8 md:p-10 border-b lg:border-b-0 lg:border-r border-neutral-200 dark:border-neutral-700/50">
+                    <!-- 头像区域 -->
+                    <div class="relative mb-8">
+                        <div class="absolute -inset-4 bg-primary-500/10 dark:bg-primary-600/10 rounded-xl blur-xl opacity-70 animate-float"></div>
+                        <img 
+                            src="https://i2.hdslb.com/bfs/face/d287d9dcb6757413c6c9ab682086ee3a22bae52a.jpg@150w_150h.jpg" 
+                            alt="个人头像" 
+                            class="relative w-40 h-40 mx-auto rounded-xl object-cover border-4 border-primary-500/20 dark:border-primary-600/20 transition-all-ease hover:scale-105 card-hover"
+                        >
+                    </div>
+
+                    <!-- 基本信息 -->
+                    <div class="text-center mb-10">
+                        <h1 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-neutral-900 dark:text-white mb-3">Mint</h1>
+                        <p class="text-lg text-primary-500 dark:text-primary-400 mb-4">A lost person</p>
+                        <div class="w-20 h-0.5 bg-primary-500/30 dark:bg-primary-600/30 mx-auto my-6"></div>
+                        <p class="text-neutral-700 dark:text-neutral-300 text-base leading-relaxed text-balance">
+                            Leave my own footprints in the world</br>
+			                人生は意味が無い
+                        </p>
+                    </div>
+
+                    <!-- 社交链接 -->
+                    <div class="mb-10">
+                        <h2 class="text-base font-semibold text-neutral-800 dark:text-neutral-200 uppercase tracking-wider mb-6 text-center">LINK</h2>
+                        <div class="flex justify-center gap-4">
+                            <a href="https://github.com/MintHana" target="_blank" class="w-12 h-12 rounded-full bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center text-neutral-700 dark:text-neutral-200 transition-all-ease hover:bg-primary-500 dark:hover:bg-primary-500 hover:text-white card-hover" aria-label="GitHub">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                            <a href="mailto:datazzh@outlook.com" class="w-12 h-12 rounded-full bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center text-neutral-700 dark:text-neutral-200 transition-all-ease hover:bg-blue-600 dark:hover:bg-blue-600 hover:text-white card-hover" aria-label="邮箱">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </a>
+                            <a href="https://www.cnblogs.com/MintHana" target="_blank" class="w-12 h-12 rounded-full bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center text-neutral-700 dark:text-neutral-200 transition-all-ease hover:bg-red-500 dark:hover:bg-red-500 hover:text-white card-hover" aria-label="博客">
+                                <i class="fas fa-blog text-xl"></i>
+                            </a>
+			                <a href="https://www.zhihu.com/people/70-28-52-15" target="_blank" class="w-12 h-12 rounded-full bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center text-neutral-700 dark:text-neutral-200 transition-all-ease hover:bg-blue-400 dark:hover:bg-blue-400 hover:text-white card-hover" aria-label="知乎">
+                                <i class="fab fa-zhihu text-xl"></i>
+                            </a>
+                            <a href="https://space.bilibili.com/475439924" target="_blank" class="w-12 h-12 rounded-full bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center text-neutral-700 dark:text-neutral-200 transition-all-ease hover:bg-pink-500 dark:hover:bg-pink-600 hover:text-white card-hover" aria-label="B站">
+                                <i class="fa-brands fa-bilibili"></i>
+                            </a>
+
+                        </div>
+                    </div>
+
+                    <!-- 核心技能 -->
+                    <div>
+                        <h2 class="text-base font-semibold text-neutral-800 dark:text-neutral-200 uppercase tracking-wider mb-6 text-center">Professional skills</h2>
+                        <div class="flex flex-wrap gap-3 justify-center">
+			    <span class="px-4 py-2 bg-primary-500/10 dark:bg-primary-600/10 text-primary-500 dark:text-primary-400 text-sm rounded-full skill-tag">Python</span>
+                            <span class="px-4 py-2 bg-primary-500/10 dark:bg-primary-600/10 text-primary-500 dark:text-primary-400 text-sm rounded-full skill-tag">Java</span>
+                            <span class="px-4 py-2 bg-primary-500/10 dark:bg-primary-600/10 text-primary-500 dark:text-primary-400 text-sm rounded-full skill-tag">Hadoop</span>
+                            <span class="px-4 py-2 bg-primary-500/10 dark:bg-primary-600/10 text-primary-500 dark:text-primary-400 text-sm rounded-full skill-tag">Spark</span>
+                            <span class="px-4 py-2 bg-secondary-500/10 dark:bg-secondary-600/10 text-secondary-500 dark:text-secondary-400 text-sm rounded-full skill-tag">MySQL</span>
+                            <span class="px-4 py-2 bg-primary-500/10 dark:bg-primary-600/10 text-primary-500 dark:text-primary-400 text-sm rounded-full skill-tag">HTML5+CSS3+JavaScript</span>
+                            <span class="px-4 py-2 bg-secondary-500/10 dark:bg-secondary-600/10 text-secondary-500 dark:text-secondary-400 text-sm rounded-full skill-tag">Web Crawler</span>
+                            <span class="px-4 py-2 bg-accent-500/10 dark:bg-accent-600/10 text-accent-500 dark:text-accent-400 text-sm rounded-full skill-tag">Data Development</span>
+                            <span class="px-4 py-2 bg-accent-500/10 dark:bg-accent-600/10 text-accent-500 dark:text-accent-400 text-sm rounded-full skill-tag">Data Analysis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右侧内容区 -->
+                <div class="w-full lg:w-3/5 p-8 md:p-10">
+                    <!-- 学习经历 -->
+                    <section class="mb-12">
+                        <h2 class="text-xl font-bold text-neutral-900 dark:text-white mb-8 flex items-center gap-3">
+                            <div class="w-10 h-10 bg-primary-500/10 dark:bg-primary-600/10 rounded-full flex items-center justify-center text-primary-500 dark:text-primary-400">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <span>Journey of Learning</span>
+                            <div class="flex-1 h-0.5 bg-neutral-200 dark:bg-neutral-700/50"></div>
+                        </h2>
+                        
+                        <div class="space-y-8">
+                            <div class="border-l-2 border-primary-500/30 dark:border-primary-600/30 pl-6 ml-2 card-hover bg-neutral-50/50 dark:bg-neutral-700/20 p-6 rounded-xl">
+                                <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-3">
+                                    <h3 class="text-lg font-semibold text-neutral-800 dark:text-neutral-100">Data Science</h3>
+                                    <span class="text-sm text-neutral-500 dark:text-neutral-400 mt-2 md:mt-0 bg-neutral-200 dark:bg-neutral-700/50 px-3 py-1 rounded-full">2022.09 - 2026.06</span>
+                                </div>
+                                <p class="text-base text-primary-500 dark:text-primary-400 mb-3 font-medium">Bachelor</p>
+                                <p class="text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">
+                                </p>
+                            </div>
+                        </div>
+                        <div class="space-y-8">
+                            <div class="border-l-2 border-primary-500/30 dark:border-primary-600/30 pl-6 ml-2 card-hover bg-neutral-50/50 dark:bg-neutral-700/20 p-6 rounded-xl">
+                                <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-3">
+                                    <h3 class="text-lg font-semibold text-neutral-800 dark:text-neutral-100">Space Big Data Analytics</h3>
+                                    <span class="text-sm text-neutral-500 dark:text-neutral-400 mt-2 md:mt-0 bg-neutral-200 dark:bg-neutral-700/50 px-3 py-1 rounded-full">2026.09 - 2028.06</span>
+                                </div>
+                                <p class="text-base text-primary-500 dark:text-primary-400 mb-3 font-medium">Master</p>
+                                <p class="text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 项目/实践经验 -->
+                    <section class="mb-12">
+                        <h2 class="text-xl font-bold text-neutral-900 dark:text-white mb-8 flex items-center gap-3">
+                            <div class="w-10 h-10 bg-secondary-500/10 dark:bg-secondary-600/10 rounded-full flex items-center justify-center text-secondary-500 dark:text-secondary-400">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <span>Projects</span>
+                            <div class="flex-1 h-0.5 bg-neutral-200 dark:bg-neutral-700/50"></div>
+                        </h2>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- 项目卡片1 -->
+                            <a href="https://minthana.github.io/blog" target="_blank" class="block">
+                                <div class="bg-neutral-50 dark:bg-neutral-700/30 rounded-xl p-6 card-hover group relative">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-8 h-8 bg-primary-500/10 dark:bg-primary-600/10 rounded-full flex items-center justify-center text-primary-500 dark:text-primary-400">
+                                                <i class="fa fa-desktop"></i>
+                                            </div>
+                                            <h3 class="text-lg font-semibold text-neutral-800 dark:text-neutral-100">MintHana's Blog</h3>
+                                        </div>
+                                        
+                                    </div>
+                                    <p class="text-sm text-neutral-500 dark:text-neutral-400 mb-4 bg-neutral-200/50 dark:bg-neutral-800/50 px-3 py-1 rounded-full inline-block">MyBlog</p>
+                                    <i class="fas fa-external-link-alt text-primary-500 dark:text-primary-400 transition-all-ease ml-2"></i><span class="text-sm text-primary-500 dark:text-primary-400 ml-1">GoTo</span>
+                                    <p class="text-base text-neutral-700 dark:text-neutral-300">
+                                        Record and share learning
+                                    </p>
+                                </div>
+                            </a>
+
+                            <!-- 项目卡片2 -->
+                            <a href="" target="_blank" class="block">
+                                <div class="bg-neutral-50 dark:bg-neutral-700/30 rounded-xl p-6 card-hover group relative">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-8 h-8 bg-green-500/10 dark:bg-green-600/10 rounded-full flex items-center justify-center">
+                                                <i class="fab fa-weixin text-xl wechat-green"></i>
+                                            </div>
+                                            <h3 class="text-lg font-semibold text-neutral-800 dark:text-white">MintHana's Moments</h3>
+                                        </div>
+                                    </div>
+                                    <p class="text-sm text-neutral-500 dark:text-neutral-400 mb-4 bg-neutral-200/50 dark:bg-neutral-800/50 px-3 py-1 rounded-full inline-block">MyLife</p>
+                                    <i class="fas fa-external-link-alt text-primary-500 dark:text-primary-400 transition-all-ease ml-2"></i><span class="text-sm text-primary-500 dark:text-primary-400 ml-1">GoTo</span>
+                                    <p class="text-base text-neutral-700 dark:text-neutral-300">
+                                        Share my life
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    </section>
+
+                    <!-- 关于我 -->
+                    <section>
+                        <h2 class="text-xl font-bold text-neutral-900 dark:text-white mb-8 flex items-center gap-3">
+                            <div class="w-10 h-10 bg-accent-500/10 dark:bg-accent-600/10 rounded-full flex items-center justify-center text-accent-500 dark:text-accent-400">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <span>About me</spa
